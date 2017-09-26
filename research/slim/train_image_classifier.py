@@ -395,6 +395,8 @@ def main(server, log_dir, context):
     FLAGS.checkpoint_path = context.get("checkpoint_path")
     FLAGS.checkpoint_exclude_scopes = context.get("checkpoint_exclude_scopes")
     FLAGS.trainable_scopes = context.get("trainable_scopes")
+    FLAGS.save_summaries_secs = context.get("save_summaries_secs") or 600
+    FLAGS.save_interval_secs = context.get("save_interval_secs") or 600
 
     if len(server.server_def.cluster.job) > 1:
         # Using parameter servers
