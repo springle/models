@@ -397,6 +397,7 @@ def main(server, log_dir, context):
     FLAGS.trainable_scopes = context.get("trainable_scopes")
     FLAGS.save_summaries_secs = context.get("save_summaries_secs") or 600
     FLAGS.save_interval_secs = context.get("save_interval_secs") or 600
+    FLAGS.num_clones = server.server_def.default_session_config.device_count["GPU"]
 
     if len(server.server_def.cluster.job) > 1:
         # Using parameter servers
