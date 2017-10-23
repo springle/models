@@ -529,7 +529,7 @@ class DeploymentConfig(object):
     self._num_replicas = num_replicas
     self._num_ps_tasks = num_ps_tasks
     self._ps_device = '/job:' + ps_job_name if num_ps_tasks > 0 else ''
-    self._worker_device = '/job:' + worker_job_name if num_ps_tasks > 0 else ''
+    self._worker_device = '/job:' + worker_job_name + '/task:%d' % replica_id if num_ps_tasks > 0 else ''
 
   @property
   def num_clones(self):
